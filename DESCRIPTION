@@ -13,10 +13,11 @@ Description: What the package does (one paragraph).
 License: "Software code created by U.S. Government employees is not subject to copyright in the United States (17 U.S.C. ?105)."
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 Imports:
   geosphere (>= 1.5-14),
   lubridate (>= 1.8.0),
   rgdal (>= 1.5-32)
 Depends: 
     R (>= 2.10)
+LazyData: true

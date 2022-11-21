@@ -39,26 +39,24 @@
 #' "FailRateCheck". The new column contains a TRUE/FALSE value describing
 #' whether the points fail the rate check (bad data = TRUE).
 #' @examples
-#' df=data.frame(
-#'   LAT=c(42.16915,42.16916,42.16917),
-#'   LON=c(-66.92022,-66.92025,-66.92026),
-#'   TIMESTAMP=c('2022-10-24 10:00:30','2022-10-24 10:05:30','2022-10-24 10:10:30'),
-#'   temperature=c(10,50,10.2),
-#'   depth=c(100,101,100),
-#'   do=c(9,109.5,9),
-#'   salinity=c(35,38,35.1)
-#'   )
-#' ExpectedRegionCheck(
-#'      region='North_Atlantic',
+#' RateofChangeCheck(
+#'      column="TEMPERATURE",
+#'      threshold=3,
 #'      dataframe=df
 #'      )
-ExpectedRegionCheck=function(column,threshold=3,dataframe){
+RateofChangeCheck=function(column,threshold=3,dataframe){
   ## Select the column of interest
   data_col=which(colnames(dataframe)==column)
   ## Calculate the standard deviation for the full dataset
   SD=sd(dataframe[,data_col])
   ## Order the data by time
   dataframe=dataframe[order(dataframe$TIMESTAMP),]
+  ## Create an empty vector to store the rate of change in
+  ROC=rep(NA,nrow(dataframe))
   ## Calculate the rate of change (in SD) between each measurement
+  for(i in 2:nrow(dataframe)){
+    ROC[i]=abs(dataframe[i,data_col]-dataframe[i-1,data_col])/SD
+  }
+  dataframe$FailRateCheck=ROC>threshold
   return(dataframe)
 }
