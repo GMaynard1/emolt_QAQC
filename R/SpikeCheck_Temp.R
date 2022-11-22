@@ -52,7 +52,8 @@
 #'   depth_column='depth',
 #'   time_column='TIMESTAMP'
 #'   )
-SpikeCheck_Temp=function(dataframe,temp_column,time_column){
+#' @export
+SpikeCheck_Temp=function(dataframe,temp_column,time_column,depth_column){
   ## Check to see whether the dataframe contains at least three rows
   if(nrow(dataframe)<3){
     stop("Dataframe too short to analyze")
