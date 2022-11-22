@@ -20,22 +20,18 @@
 #'
 #' This function checks to see if the location of the data collection is out of
 #' bounds
-#' @param lat latitude of the data collection. There is no default value.
-#' @param lon longitude of the data collection. There is no default value.
-
-#' @returns Returns a TRUE/FALSE value as to whether location is out of bounds.
-#' TRUE indicates bad data.
+#' @param dataframe a dataframe containing at least the columns LATITUDE and LONGITUDE
+#' @returns Returns the original dataframe with an extra column called ImpossibleLocation in which TRUE indicates bad data.
 #' @examples
 #' ImpossibleLocationCheck(
-#'   lat=42.16915,
-#'   lon=-66.92022
+#'   dataframe=df
 #'   )
-
-ImpossibleLocationCheck=function(lat,lon){
-  ## Check if the values are out of range
-  if(-90<lat&lat<90&-180<lon&lon<180){
-    return(FALSE)
-  } else {
-    return(TRUE)
-  }
+#' @export
+ImpossibleLocationCheck=function(dataframe){
+  dataframe$ImpossibleLocation=ifelse(
+    -90>dataframe$LATITUDE|dataframe$LATITUDE>90|-180<dataframe$LONGITUDE|180>dataframe$LONGITUDE,
+    TRUE,
+    FALSE
+  )
+  return(dataframe)
 }
