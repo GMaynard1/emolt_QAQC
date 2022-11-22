@@ -63,11 +63,12 @@
 #'   )
 #' StuckValueCheck(
 #'   dataframe=df,
-#'   salinity_column='salinity',
-#'   depth_column='depth',
+#'   salinity_column=NA,
+#'   depth_column=NA,
 #'   time_column='TIMESTAMP',
-#'   temp_column='temperature'
+#'   temp_column=NA
 #'   )
+#' @export
 StuckValueCheck=function(dataframe,salinity_column,depth_column,time_column,temp_column,tol_temp=0.05,tol_sal=0.05,tol_press=0.5){
   ## Sort the dataframe by timestamp
   dataframe=dataframe[order(dataframe[,which(colnames(dataframe)==time_column)]),]
@@ -91,36 +92,42 @@ StuckValueCheck=function(dataframe,salinity_column,depth_column,time_column,temp
     }
     ## Check the available rows
     for(i in 2:(nrow(dataframe)-1)){
-      ## Check salinity differences
-      dataframe$StuckSalinity_Suspected[i]=ifelse(
-        abs(dataframe[i,salinity_col]-dataframe[i-1,salinity_col])<tol_sal,
-        ifelse(
-          abs(dataframe[i,salinity_col]-dataframe[i+1,salinity_col])<tol_sal,
-          TRUE,
+      if(is.na(salinity_column)==FALSE){
+        ## Check salinity differences
+        dataframe$StuckSalinity_Suspected[i]=ifelse(
+          abs(dataframe[i,salinity_col]-dataframe[i-1,salinity_col])<tol_sal,
+          ifelse(
+            abs(dataframe[i,salinity_col]-dataframe[i+1,salinity_col])<tol_sal,
+            TRUE,
+            FALSE
+          ),
           FALSE
-        ),
-        FALSE
-      )
-      ## Check depth differences
-      dataframe$StuckDepth_Suspected[i]=ifelse(
-        abs(dataframe[i,depth_col]-dataframe[i-1,depth_col])<tol_press,
-        ifelse(
-          abs(dataframe[i,depth_col]-dataframe[i+1,depth_col])<tol_press,
-          TRUE,
+        )
+      }
+      if(is.na(depth_column)==FALSE){
+        ## Check depth differences
+        dataframe$StuckDepth_Suspected[i]=ifelse(
+          abs(dataframe[i,depth_col]-dataframe[i-1,depth_col])<tol_press,
+          ifelse(
+            abs(dataframe[i,depth_col]-dataframe[i+1,depth_col])<tol_press,
+            TRUE,
+            FALSE
+          ),
           FALSE
-        ),
-        FALSE
-      )
-      ## Check temperature differences
-      dataframe$StuckTemperature_Suspected[i]=ifelse(
-        abs(dataframe[i,temp_col]-dataframe[i-1,temp_col])<tol_temp,
-        ifelse(
-          abs(dataframe[i,temp_col]-dataframe[i+1,temp_col])<tol_temp,
-          TRUE,
+        )
+      }
+      if(is.na(temp_column)==FALSE){
+        ## Check temperature differences
+        dataframe$StuckTemperature_Suspected[i]=ifelse(
+          abs(dataframe[i,temp_col]-dataframe[i-1,temp_col])<tol_temp,
+          ifelse(
+            abs(dataframe[i,temp_col]-dataframe[i+1,temp_col])<tol_temp,
+            TRUE,
+            FALSE
+          ),
           FALSE
-        ),
-        FALSE
-      )
+        )
+      }
       ## If there are enough rows, confirm stuck data
       if(i>2&(i+2)<=nrow(dataframe)){
         dataframe$StuckSalinity[i]=ifelse(
