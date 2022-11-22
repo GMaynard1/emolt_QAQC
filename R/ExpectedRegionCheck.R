@@ -24,21 +24,14 @@
 #' @param region the region the vessel is expected to be operating in. Can be
 #' one of the following: 'Alaska','North_Atlantic','Greenland','New_Zealand',
 #' 'North_Sea_Baltic'. There is no default value.
-#' @param dataframe a dataframe containing at least the columns LAT and LON,
-#' where LAT is latitude in decimal degrees and LON is longitude in decimal
+#' @param dataframe a dataframe containing at least the columns LATITUDE and LONGITUDE,
+#' where LATITUDE is latitude in decimal degrees and LONGITUDE is longitude in decimal
 #' degrees. There is no default value.
 
 #' @returns Returns the original dataframe with an additional column called
 #' "OutRegion". The new column contains a TRUE/FALSE value describing whether
 #' the points in the data occur outside of the specified region (TRUE)
 #' @examples
-#' df=data.frame(
-#'   LAT=c(42.16915,42.16916),
-#'   LON=c(-66.92022,-66.92025),
-#'   TIMESTAMP=c('2022-10-24 10:00:30','2022-10-24 10:05:30'),
-#'   temperature=c(10,10.2),
-#'   depth=c(100,101)
-#'   )
 #' ExpectedRegionCheck(
 #'      region='North_Atlantic',
 #'      dataframe=df
@@ -78,7 +71,7 @@ ExpectedRegionCheck=function(region,dataframe){
   dataframe$OutRegion=NA
   ## Check if the specified point is within the specified region
   dataframe$OutRegion=ifelse(
-    dataframe$LON<=maxLon&dataframe$LON>=minLon&dataframe$LAT<=maxLat&dataframe$LAT>=minLat,
+    dataframe$LONGITUDE<=maxLon&dataframe$LONGITUDE>=minLon&dataframe$LATITUDE<=maxLat&dataframe$LATITUDE>=minLat,
     FALSE,
     TRUE
     )

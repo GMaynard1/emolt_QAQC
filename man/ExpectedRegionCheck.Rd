@@ -11,8 +11,8 @@ ExpectedRegionCheck(region, dataframe)
 one of the following: 'Alaska','North_Atlantic','Greenland','New_Zealand',
 'North_Sea_Baltic'. There is no default value.}
 
-\item{dataframe}{a dataframe containing at least the columns LAT and LON,
-where LAT is latitude in decimal degrees and LON is longitude in decimal
+\item{dataframe}{a dataframe containing at least the columns LATITUDE and LONGITUDE,
+where LATITUDE is latitude in decimal degrees and LONGITUDE is longitude in decimal
 degrees. There is no default value.}
 }
 \value{
@@ -25,13 +25,6 @@ This function checks to see if the data fall within the expected
 operating region of a vessel.
 }
 \examples{
-df=data.frame(
-  LAT=c(42.16915,42.16916),
-  LON=c(-66.92022,-66.92025),
-  TIMESTAMP=c('2022-10-24 10:00:30','2022-10-24 10:05:30'),
-  temperature=c(10,10.2),
-  depth=c(100,101)
-  )
 ExpectedRegionCheck(
      region='North_Atlantic',
      dataframe=df

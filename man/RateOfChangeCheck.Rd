@@ -30,17 +30,9 @@ between measurement Tn-1 and Tn must be less than three standard deviations
 (3*SD). The SD of the T time series is computed over the full segment.
 }
 \examples{
-df=data.frame(
-  LAT=c(42.16915,42.16916,42.16917),
-  LON=c(-66.92022,-66.92025,-66.92026),
-  TIMESTAMP=c('2022-10-24 10:00:30','2022-10-24 10:05:30','2022-10-24 10:10:30'),
-  temperature=c(10,50,10.2),
-  depth=c(100,101,100),
-  do=c(9,109.5,9),
-  salinity=c(35,38,35.1)
-  )
-ExpectedRegionCheck(
-     region='North_Atlantic',
+RateofChangeCheck(
+     column="TEMPERATURE",
+     threshold=3,
      dataframe=df
      )
 }
