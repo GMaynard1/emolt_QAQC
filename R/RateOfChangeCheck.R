@@ -52,7 +52,7 @@
 #'      region='North_Atlantic',
 #'      dataframe=df
 #'      )
-ExpectedRegionCheck=function(column,threshold=3,dataframe){
+RateOfChangeCheck=function(column,threshold=3,dataframe){
   ## Select the column of interest
   data_col=which(colnames(dataframe)==column)
   ## Calculate the standard deviation for the full dataset
