@@ -29,9 +29,21 @@
 #' @export
 ImpossibleLocationCheck=function(dataframe){
   dataframe$ImpossibleLocation=ifelse(
-    -90>dataframe$LATITUDE|dataframe$LATITUDE>90|-180<dataframe$LONGITUDE|180>dataframe$LONGITUDE,
+    -90>dataframe$LATITUDE,
     TRUE,
-    FALSE
+    ifelse(
+      90<dataframe$LATITUDE,
+      TRUE,
+      ifelse(
+        -180>dataframe$LONGITUDE,
+        TRUE,
+        ifelse(
+          180<dataframe$LONGITUDE,
+          TRUE,
+          FALSE
+        )
+      )
+    )
   )
   return(dataframe)
 }
