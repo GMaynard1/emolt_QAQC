@@ -48,7 +48,7 @@ OnLandCheck=function(data){
 
   ## Check whether the data points are over land or not. An NA value indicates
   ## water.
-  results=over(x,land)$featurecla
+  results=sp::over(x,land)$featurecla
 
   ## Convert to TRUE/FALSE values
   results=ifelse(
