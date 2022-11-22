@@ -22,27 +22,27 @@
 #' water based on the high resolution GeoJSON available from the World Bank at
 #' https://datacatalog.worldbank.org/search/dataset/0038272
 #' @param dataframe a dataframe containing at minimum a column for latitude and a
-#' column for longitude. These columns should be named LAT and LON. There is no
+#' column for longitude. These columns should be named LATITUDE and LONGITUDE. There is no
 #' default value.
 #' @returns Returns the original dataframe with an additional column called
 #' "OnLand". The new column contains a TRUE/FALSE value describing whether the
 #' points in the data are on land or not. TRUE values indicate data are on land.
 #' @examples
 #' df=data.frame(
-#'   LAT=42.16915,
-#'   LON=-66.92022,
+#'   LATITUDE=42.16915,
+#'   LONGITUDE=-66.92022,
 #'   temperature=10,
 #'   depth=100
 #'   )
 #'
 #' OnLandCheck(data=df)
-
+#' @export
 OnLandCheck=function(data){
   ## Standardize column names
   x=data
   colnames(x)=toupper(colnames(x))
   ## Convert to a spatial data object using the coordinates given
-  sp::coordinates(x)=c('LON','LAT')
+  sp::coordinates(x)=c('LONGITUDE','LATITUDE')
   as(x,"SpatialPoints")
   sp::proj4string(x)=CRS("+proj=longlat +datum=WGS84")
 
