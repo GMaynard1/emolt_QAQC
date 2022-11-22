@@ -44,7 +44,7 @@ OnLandCheck=function(data){
   ## Convert to a spatial data object using the coordinates given
   sp::coordinates(x)=c('LONGITUDE','LATITUDE')
   as(x,"SpatialPoints")
-  sp::proj4string(x)=CRS("+proj=longlat +datum=WGS84")
+  sp::proj4string(x)=sp::CRS("+proj=longlat +datum=WGS84")
 
   ## Check whether the data points are over land or not. An NA value indicates
   ## water.
