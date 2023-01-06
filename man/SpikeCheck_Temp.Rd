@@ -4,7 +4,7 @@
 \alias{SpikeCheck_Temp}
 \title{SpikeCheck_Temp}
 \usage{
-SpikeCheck_Temp(dataframe, temp_column, time_column)
+SpikeCheck_Temp(dataframe, temp_column, time_column, depth_column)
 }
 \arguments{
 \item{dataframe}{a dataframe containing at least the following information:

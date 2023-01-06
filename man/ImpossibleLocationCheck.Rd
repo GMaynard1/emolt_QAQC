@@ -4,16 +4,13 @@
 \alias{ImpossibleLocationCheck}
 \title{ImpossibleLocationCheck}
 \usage{
-ImpossibleLocationCheck(lat, lon)
+ImpossibleLocationCheck(dataframe)
 }
 \arguments{
-\item{lat}{latitude of the data collection. There is no default value.}
-
-\item{lon}{longitude of the data collection. There is no default value.}
+\item{dataframe}{a dataframe containing at least the columns LATITUDE and LONGITUDE}
 }
 \value{
-Returns a TRUE/FALSE value as to whether location is out of bounds.
-TRUE indicates bad data.
+Returns the original dataframe with an extra column called ImpossibleLocation in which TRUE indicates bad data.
 }
 \description{
 This function checks to see if the location of the data collection is out of
@@ -21,7 +18,6 @@ bounds
 }
 \examples{
 ImpossibleLocationCheck(
-  lat=42.16915,
-  lon=-66.92022
+  dataframe=df
   )
 }

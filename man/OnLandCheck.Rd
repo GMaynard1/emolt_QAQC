@@ -8,7 +8,7 @@ OnLandCheck(data)
 }
 \arguments{
 \item{dataframe}{a dataframe containing at minimum a column for latitude and a
-column for longitude. These columns should be named LAT and LON. There is no
+column for longitude. These columns should be named LATITUDE and LONGITUDE. There is no
 default value.}
 }
 \value{
@@ -23,8 +23,8 @@ https://datacatalog.worldbank.org/search/dataset/0038272
 }
 \examples{
 df=data.frame(
-  LAT=42.16915,
-  LON=-66.92022,
+  LATITUDE=42.16915,
+  LONGITUDE=-66.92022,
   temperature=10,
   depth=100
   )

@@ -74,9 +74,9 @@ df=data.frame(
   )
 StuckValueCheck(
   dataframe=df,
-  salinity_column='salinity',
-  depth_column='depth',
+  salinity_column=NA,
+  depth_column=NA,
   time_column='TIMESTAMP',
-  temp_column='temperature'
+  temp_column=NA
   )
 }
