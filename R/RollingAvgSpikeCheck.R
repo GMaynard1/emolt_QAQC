@@ -33,7 +33,7 @@
 #' the rolling average (defaults to 30)
 #' @param threshold a number indicating the standard deviation threshold to
 #' trigger a QAQC flag (defaults to 1)
-#'
+#' @export
 #' @returns Returns the original dataframe with an additional column called
 #' "FailRASpikeCheck". The new column contains a TRUE/FALSE value describing
 #' whether the points fail the rate check (bad data = TRUE).

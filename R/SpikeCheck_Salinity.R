@@ -53,6 +53,7 @@
 #'   depth_column='depth',
 #'   time_column='TIMESTAMP'
 #'   )
+#' @export
 SpikeCheck_Salinity=function(dataframe,salinity_column,depth_column,time_column){
   ## Check to see whether the dataframe contains at least three rows
   if(nrow(dataframe)<3){

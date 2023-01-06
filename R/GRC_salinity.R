@@ -49,6 +49,7 @@
 #'   make='NKE',
 #'   model='Wisens CTDS'
 #'   )
+#' @export
 GRC_salinity=function(dataframe,column,make,model){
   ## Standardize make and model and retrieve the limits from the built-in
   ## sensors dataset

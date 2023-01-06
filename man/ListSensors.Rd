@@ -19,5 +19,4 @@ ListSensors
 }
 \examples{
 ListSensors()
-
 }

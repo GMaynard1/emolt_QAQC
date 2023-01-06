@@ -24,7 +24,7 @@
 #' @returns a vector of possible Make/Model combinations for use in this package
 #' @examples
 #' ListSensors()
-#'
+#' @export
 ListSensors=function(make=NA,model=NA){
   sensors=sensors[order(sensors$Model),]
   sensors=sensors[order(sensors$Make),]

@@ -46,7 +46,7 @@
 #'   startdate='2010-01-01',
 #'   timezone='US/Eastern'
 #'   )
-
+#' @export
 ImpossibleDateCheck=function(dataframe,timecol,startdate='2000-01-01',timezone='UTC'){
   ## Convert the timestamp to a POSIX value
   dataframe[,which(colnames(dataframe)==timecol)]=lubridate::ymd_hms(

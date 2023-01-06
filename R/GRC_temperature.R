@@ -48,6 +48,7 @@
 #'   make='Lowell',
 #'   model='DOT-2'
 #'   )
+#' @export
 GRC_temperature=function(dataframe,column,make,model){
   ## Standardize make and model and retrieve the limits from the built-in
   ## sensors dataset

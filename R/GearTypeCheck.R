@@ -48,6 +48,7 @@
 #'      endLat=42.16915,
 #'      gearType='GNS'
 #'      )
+#' @export
 GearTypeCheck=function(startLon,startLat,endLon,endLat,gearType,buffer=NA){
   ## Load the gear table
   devtools::load_all()

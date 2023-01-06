@@ -24,7 +24,7 @@
 #' @param temp_column a character string indicating which column name stores the time
 #' @param min_temp an integer indicating the lowest acceptable temperature (defaults to 0)
 #' @param max_temp an integer indicating the highest acceptable temperature (defaults to 30)
-
+#' @export
 #' @returns Returns a dataframe containing a TRUE/FALSE value as to whether the temperature is out of bounds.
 #' TRUE indicates bad data.
 #' @examples

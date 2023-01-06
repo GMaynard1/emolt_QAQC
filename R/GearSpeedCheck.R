@@ -64,6 +64,7 @@
 #'   speedUnits='kts',
 #'   gearType='OTB'
 #'   )
+#' @export
 GearSpeedCheck=function(dataframe,timezone,maxSpeed,speedUnits,gearType){
   ## Check to see whether the gear type is listed. If not, return an error.
   if(gearType%in%gears$ABBREVIATION){

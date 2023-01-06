@@ -51,6 +51,7 @@
 #'      buffer=1,
 #'      uom='nautical_miles'
 #'      )
+#' @export
 HarborCheck=function(homeport,dataframe,buffer,uom='meters'){
   ## Calculate the distance from port to the lat/lon in meters
   dataframe$dist_from_port=base::by(

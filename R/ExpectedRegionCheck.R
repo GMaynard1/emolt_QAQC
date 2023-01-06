@@ -36,6 +36,7 @@
 #'      region='North_Atlantic',
 #'      dataframe=df
 #'      )
+#' @export
 ExpectedRegionCheck=function(region,dataframe){
   ## Grab the coordinates based on the region
   if(region=='Alaska'){
