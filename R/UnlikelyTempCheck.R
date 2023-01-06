@@ -21,7 +21,7 @@
 #' This function checks to see if the temperature records are wildly out of
 #' bounds
 #' @param dataframe a dataframe containing a column of temperatures
-#' @param tempcol a character string indicating which column name stores the time
+#' @param temp_column a character string indicating which column name stores the time
 #' @param min_temp an integer indicating the lowest acceptable temperature (defaults to 0)
 #' @param max_temp an integer indicating the highest acceptable temperature (defaults to 30)
 
@@ -38,15 +38,15 @@
 #'   )
 #' UnlikelyTempCheck(
 #'   dataframe=df,
-#'   tempcol="temperature",
+#'   temp_column="temperature",
 #'   )
 
-UnlikelyTempCheck=function(dataframe,tempcol,min_temp=0,max_temp=30){
+UnlikelyTempCheck=function(dataframe,temp_column,min_temp=0,max_temp=30){
   ## Record whether the timestamp is out of bounds
   new_dat=dataframe
   new_dat$temp_oob=ifelse(
-    new_dat[,which(colnames(new_dat)==tempcol)]<max_temp&
-      new_dat[,which(colnames(dataframe)==tempcol)]>min_temp,
+    new_dat[,which(colnames(new_dat)==temp_column)]<max_temp&
+      new_dat[,which(colnames(dataframe)==temp_column)]>min_temp,
     FALSE,
     TRUE
   )

@@ -4,12 +4,12 @@
 \alias{UnlikelyTempCheck}
 \title{UnlikelyTempCheck}
 \usage{
-UnlikelyTempCheck(dataframe, tempcol, min_temp = 0, max_temp = 30)
+UnlikelyTempCheck(dataframe, temp_column, min_temp = 0, max_temp = 30)
 }
 \arguments{
 \item{dataframe}{a dataframe containing a column of temperatures}
 
-\item{tempcol}{a character string indicating which column name stores the time}
+\item{temp_column}{a character string indicating which column name stores the time}
 
 \item{min_temp}{an integer indicating the lowest acceptable temperature (defaults to 0)}
 
@@ -34,6 +34,6 @@ bounds
   )
 UnlikelyTempCheck(
   dataframe=df,
-  tempcol="temperature",
+  temp_column="temperature",
   )
 }
