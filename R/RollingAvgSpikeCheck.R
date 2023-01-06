@@ -51,6 +51,7 @@ RollingAvgSpikeCheck=function(dataframe,column,time_column,rolling_avg=30,thresh
   RA=rep(0,nrow(dataframe))
   RS=rep(0,nrow(dataframe))
   RC=rep(0,nrow(dataframe))
+  dataframe$FailRASpikeCheck=NA
   ## Order the data by time
   dataframe[,which(colnames(dataframe)==time_column)]=lubridate::ymd_hms(dataframe[,which(colnames(dataframe)==time_column)])
   dataframe=dataframe[order(dataframe[,which(colnames(dataframe)==time_column)]),]
@@ -59,8 +60,8 @@ RollingAvgSpikeCheck=function(dataframe,column,time_column,rolling_avg=30,thresh
     RA[i]=mean(dataframe[i:(i+rolling_avg-1),data_col])
     RS[i]=sd(dataframe[i:(i+rolling_avg-1),data_col])
     RC[i]=abs(dataframe[i,data_col]-dataframe[i+1,data_col])
+    dataframe$FailRASpikeCheck[i]=RC[i]>(RS[i]*threshold)
   }
-  dataframe$FailRASpikeCheck=RC>(RS*threshold)
   ## Return the flagged dataset
   return(dataframe)
 }
