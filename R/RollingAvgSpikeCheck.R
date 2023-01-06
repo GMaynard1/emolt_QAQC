@@ -57,8 +57,8 @@ RollingAvgSpikeCheck=function(dataframe,column,time_column,rolling_avg=30,thresh
   dataframe=dataframe[order(dataframe[,which(colnames(dataframe)==time_column)]),]
   ## Calculate the rate of change (in SD) between each measurement
   for(i in 1:(nrow(dataframe)-rolling_avg)){
-    RA[i]=mean(dataframe[i:(i+rolling_avg-1),data_col])
-    RS[i]=sd(dataframe[i:(i+rolling_avg-1),data_col])
+    RA[i]=mean(dataframe[i:(i+rolling_avg-1),data_col],na.rm=TRUE)
+    RS[i]=sd(dataframe[i:(i+rolling_avg-1),data_col],na.rm=TRUE)
     RC[i]=abs(dataframe[i,data_col]-dataframe[i+1,data_col])
     dataframe$FailRASpikeCheck[i]=RC[i]>(RS[i]*threshold)
   }
