@@ -48,7 +48,7 @@ ExpectedRegionCheck=function(region,dataframe){
   if(region=='North_Atlantic'){
     minLon=-75
     maxLon=30
-    minLat=0
+    minLat=30
     maxLat=90
   }
   if(region=='Greenland'){
